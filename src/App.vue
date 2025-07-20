@@ -1,12 +1,24 @@
 <template>
-  <h1>Hello from Vue + Bun!</h1>
+  <the-header />
+  <router-view />
+  <the-footer />
 </template>
 
 <script setup>
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
 </script>
 
 <style>
-h1 {
-  color: #42b983;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: "Inter", sans-serif;
 }
 </style>
