@@ -24,16 +24,19 @@
         </p>
         <div class="logos">
           <router-link to="#"
-            ><img class="icon-link" src="../assets/svg/fb.png" alt="fb"
+            ><img class="icon-link" src="../../assets/svg/fb.png" alt="fb"
           /></router-link>
           <router-link to="#"
             ><img
               class="icon-link"
-              src="../assets/svg/twitter.png"
+              src="../../assets/svg/twitter.png"
               alt="twitter"
           /></router-link>
           <router-link to="#"
-            ><img class="icon-link" src="../assets/svg/insta.png" alt="insta"
+            ><img
+              class="icon-link"
+              src="../../assets/svg/insta.png"
+              alt="insta"
           /></router-link>
         </div>
       </div>
