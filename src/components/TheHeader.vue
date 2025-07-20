@@ -3,12 +3,16 @@
     <div class="name">Foodieland<span>.</span></div>
     <div class="navigation">
       <ul>
+        <li><router-link class="nav-link" to="/">Home</router-link></li>
         <li>
-          <router-link class="nav-link" to="#">Home</router-link>
-          <router-link class="nav-link" to="#">Recipes</router-link>
-          <router-link class="nav-link" to="#">Blog</router-link>
-          <router-link class="nav-link" to="#">Contact</router-link>
-          <router-link class="nav-link" to="#">About us</router-link>
+          <router-link class="nav-link" to="/recipes">Recipes</router-link>
+        </li>
+        <li><router-link class="nav-link" to="/blog">Blog</router-link></li>
+        <li>
+          <router-link class="nav-link" to="/contact">Contact</router-link>
+        </li>
+        <li>
+          <router-link class="nav-link" to="/about">About us</router-link>
         </li>
       </ul>
     </div>
@@ -51,18 +55,20 @@ export default {};
 /* MIDDLE LINKS */
 ul {
   list-style-type: none;
-}
-li {
   color: #000;
   display: flex;
+  flex-direction: row;
   gap: 6rem;
+}
+li {
+  padding: 4rem 0;
 }
 .nav-link:link,
 .nav-link:visited {
   text-decoration: none;
   color: #000;
-  font-size: 1.6rem;
   padding: 4rem 0;
+  font-size: 1.6rem;
   transition: all 0.3s;
 }
 

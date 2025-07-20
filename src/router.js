@@ -8,7 +8,7 @@ const routes = [
     { path: '/recipe/:id', component: null },
     { path: '/blog', component: null },
     { path: '/blog/:id', component: null },
-    { path: '/contactus', component: null },
+    { path: '/contact', component: null },
     { path: '/:notFound(.*)', component: null },
 ];
 
