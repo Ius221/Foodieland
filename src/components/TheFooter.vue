@@ -49,6 +49,9 @@ export default {};
 /*************/
 /* TOP PART */
 /***********/
+.footer {
+  margin-bottom: 4.8rem;
+}
 .top {
   margin-bottom: 4.8rem;
 }

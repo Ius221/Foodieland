@@ -19,6 +19,7 @@ html {
   font-size: 62.5%;
 }
 body {
+  letter-spacing: -2%;
   font-family: "Inter", sans-serif;
 }
 </style>
