@@ -56,19 +56,26 @@
       </div>
     </form>
   </the-container>
-  <callto-action />
+  <callto-action class="cta" />
+  <the-gallery class="cta" />
 </template>
 
-<!-- 
-<script>
-import HeadingPrimary from "../../ui/HeadingPrimary.vue";
+<!-- <script>
 export default {
-  components: { HeadingPrimary },
+    data:[
+        {img:'img--1.png',
+            title: 'lorem lorem lorem lorem',
+    
+        }
+    ]
 };
 </script>
  -->
-
 <style scoped>
+.cta {
+  margin: 16rem auto;
+}
+
 .form {
   margin-top: 8.4rem;
 }

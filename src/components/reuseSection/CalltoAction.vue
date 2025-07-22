@@ -20,6 +20,7 @@
         </form>
       </div>
       <img :src="choppedImg" alt="chopped food" class="left-img img" />
+      <img :src="herb" alt="Rucola" class="herb" />
       <img :src="plateImg" alt="chopped food" class="right-img img" />
     </div>
   </the-container>
@@ -27,11 +28,13 @@
 
 <script>
 import choppedImg from "@/assets/otherImg/chopped.png";
+import herb from "@/assets/svg/rucola-png.png";
 // import plateImg from "@/assets/otherImg/Photo_plate.png";
 export default {
   data() {
     return {
       choppedImg,
+      herb,
       plateImg: new URL("@/assets/otherImg/Photo_plate.png", import.meta.url)
         .href,
     };
@@ -110,5 +113,9 @@ img {
   bottom: -25%;
   left: -8%;
   transform: rotate(33deg);
+}
+.herb {
+  top: 54%;
+  right: 17%;
 }
 </style>
