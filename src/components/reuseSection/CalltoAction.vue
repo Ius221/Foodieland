@@ -97,8 +97,15 @@ button {
   border: none;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
   font-size: 1.4rem;
   font-weight: 600;
+}
+button:hover {
+  background-color: #e7f9fd;
+  color: #000;
+  border: 1px solid #000;
 }
 
 img {

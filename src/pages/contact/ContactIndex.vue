@@ -5,7 +5,7 @@
         <heading-primary class="heading"> Contact us </heading-primary>
         <div class="chef-img">
           <div class="img-container">
-            <img src="../../assets/otherImg/chef.png" alt="chef Image" />
+            <img :src="chef" alt="chef Image" />
           </div>
         </div>
         <div class="first--col">
@@ -60,17 +60,17 @@
   <the-gallery class="cta" />
 </template>
 
-<!-- <script>
+<script>
+import chef from "@/assets/otherImg/chef.png";
 export default {
-    data:[
-        {img:'img--1.png',
-            title: 'lorem lorem lorem lorem',
-    
-        }
-    ]
+  data() {
+    return {
+      chef,
+    };
+  },
 };
 </script>
- -->
+
 <style scoped>
 .cta {
   margin: 16rem auto;
@@ -163,10 +163,16 @@ textarea {
   align-items: center;
   font-size: 1.6rem;
   color: #fff;
+  transition: all 0.3s;
   margin-top: 4.8rem;
   border-radius: 1.6rem;
 }
-
+.submit-btn:hover {
+  background-color: #e7f9fd;
+  border: 1px solid #000;
+  font-weight: 600;
+  color: #000;
+}
 option:checked,
 option:focus {
   font-weight: bold;

@@ -17,15 +17,18 @@
     </div>
     <div class="list-items">
       <the-blogs class="blogs" />
+      <right-recipe />
     </div>
   </the-container>
 </template>
 
 <script>
 import TheBlogs from "./TheBlogs.vue";
+import RightRecipe from "./RightRecipe.vue";
 export default {
   components: {
     TheBlogs,
+    RightRecipe,
   },
 };
 </script>

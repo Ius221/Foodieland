@@ -5,7 +5,7 @@ import recipeModule from './modules/recipe/index.js';
 
 const store = createStore({
     modules: {
-        blogs: blogModule,
+        blog: blogModule,
         recipe: recipeModule
     }
 });
