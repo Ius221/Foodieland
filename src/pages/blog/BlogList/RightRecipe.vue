@@ -16,6 +16,7 @@
         <the-para>By Ayush Gupta</the-para>
       </div>
     </div>
+    <ads-card />
   </div>
 </template>
 

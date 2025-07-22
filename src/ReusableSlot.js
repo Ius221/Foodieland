@@ -3,6 +3,7 @@ import HeadingPrimary from "./ui/HeadingPrimary.vue";
 import HeadingTertiary from "./ui/HeadingTertiary.vue";
 import CalltoAction from "./components/reuseSection/CalltoAction.vue";
 import TheGallery from "./components/reuseSection/TheGallery.vue";
+import AdsCard from "./components/reuseSection/AdsCard.vue";
 import ThePara from "./ui/ThePara.vue";
 
 export default function reusableComponent(app) {
@@ -12,4 +13,5 @@ export default function reusableComponent(app) {
     app.component('CalltoAction', CalltoAction);
     app.component('TheGallery', TheGallery);
     app.component('ThePara', ThePara);
+    app.component('AdsCard', AdsCard);
 }
