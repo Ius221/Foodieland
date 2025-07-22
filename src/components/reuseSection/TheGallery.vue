@@ -3,7 +3,7 @@
     <div class="gallery">
       <h3>Check out the delicious recipe</h3>
       <div class="grid">
-        <div class="col" v-for="(food, ind) in foodList" :key="ind">
+        <div class="col" v-for="(food, ind) in foodList.slice(0, 4)" :key="ind">
           <div
             class="like-conainter"
             :class="{ liked: foodList[ind].liked }"
@@ -37,50 +37,20 @@ import clock from "@/assets/svg/clock.png";
 import knife from "@/assets/svg/forkKnife.png";
 
 export default {
+  computed: {
+    foodList() {
+      return this.$store.state.recipe.recipes;
+    },
+  },
   data() {
     return {
       clock,
       knife,
-      foodList: [
-        {
-          liked: false,
-          imgpath: new URL("@/assets/foodImages/img--1.png", import.meta.url)
-            .href,
-          title: "Spicy Paneer Delight with Garlic Twist",
-          time: "25 Minutes",
-          type: "South Indian",
-        },
-        {
-          liked: true,
-          imgpath: new URL("@/assets/foodImages/img--2.png", import.meta.url)
-            .href,
-          title: "Creamy Mushroom Curry Served with Jeera Rice",
-          time: "40 Minutes",
-          type: "Fusion",
-        },
-        {
-          liked: false,
-          imgpath: new URL("@/assets/foodImages/img--3.png", import.meta.url)
-            .href,
-          title: "Traditional Rajasthani Dal Baati",
-          time: "50 Minutes",
-          type: "Rajasthani",
-        },
-        {
-          liked: true,
-          imgpath: new URL("@/assets/foodImages/img--4.png", import.meta.url)
-            .href,
-          title: "Tandoori Veg Platter with Mint Chutney",
-          time: "35 Minutes",
-          type: "Punjabi",
-        },
-      ],
     };
   },
   methods: {
     toggleLike(index) {
-      this.foodList[index].liked = !this.foodList[index].liked;
-      console.log(this.foodList[index]);
+      this.$store.commit("recipe/toggleLike", index);
     },
   },
 };
@@ -106,15 +76,20 @@ h3 {
   width: 29rem;
 }
 .col {
+  cursor: pointer;
   position: relative;
   max-width: 29rem;
 }
 .image {
   position: absolute;
   top: 50%;
+  transition: all 0.3s;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
+}
+.col:hover .image {
+  transform: translate(-50%, -50%) scale(1.1);
 }
 .recipe-name {
   margin: 1.6rem 0 2.4rem 0;

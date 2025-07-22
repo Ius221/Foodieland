@@ -29,7 +29,6 @@
 <script>
 import choppedImg from "@/assets/otherImg/chopped.png";
 import herb from "@/assets/svg/rucola-png.png";
-// import plateImg from "@/assets/otherImg/Photo_plate.png";
 export default {
   data() {
     return {
