@@ -63,8 +63,9 @@ export default {
   overflow: hidden;
 }
 .food-img {
-  top: -5%;
-  width: 100%;
+  top: -1%;
+  left: -15%;
+  width: 140%;
   transition: all 0.3s;
   position: absolute;
   z-index: -1;

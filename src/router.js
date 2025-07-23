@@ -19,10 +19,10 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    // scrollBehavior(_, _, savedPosition) {
-    //     if (savedPosition) return savedPosition;
-    //     return { left: 0, top: 0 }
-    // }
+    scrollBehavior(_, __, savedPosition) {
+        if (savedPosition) return savedPosition;
+        return { top: 0, left: 0, behavior: 'smooth' }
+    }
 });
 
 export default router;

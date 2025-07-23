@@ -20,7 +20,7 @@
       <div class="bottom">
         <div class="empty">&nbsp;</div>
         <p class="text">
-          &copy; 2025 Foodieland. Powered by <span>NovexiQ</span>
+          &copy; 2025 Foodieland. Powered by <span>GuptaG</span>
         </p>
         <div class="logos">
           <router-link to="#"

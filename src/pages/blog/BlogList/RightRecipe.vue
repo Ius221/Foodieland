@@ -1,20 +1,18 @@
 <template>
   <div class="right-recipe">
     <h2>Tasty Recipes</h2>
-    <div
-      class="recipe-list"
-      v-for="(recipe, ind) in recipes.slice(0, 3)"
-      :key="ind"
-    >
-      <div class="img-container">
-        <img :src="recipe.imgpath" alt="" />
-      </div>
-      <div class="recipe-text">
-        <h4 class="recipe-name">
-          {{ recipe.title.split(" ").slice(1, 3).join(" ") }}
-        </h4>
-        <the-para>By Ayush Gupta</the-para>
-      </div>
+    <div v-for="(recipe, ind) in recipes.slice(0, 3)" :key="ind">
+      <router-link class="recipe-list" :to="`/recipe/${recipe.id}`">
+        <div class="img-container">
+          <img :src="recipe.imgpath" alt="" />
+        </div>
+        <div class="recipe-text">
+          <h4 class="recipe-name">
+            {{ recipe.title.split(" ").slice(1, 3).join(" ") }}
+          </h4>
+          <the-para>By Ayush Gupta</the-para>
+        </div>
+      </router-link>
     </div>
     <ads-card />
   </div>
@@ -69,5 +67,10 @@ img {
 
 .recipe-list:hover img {
   transform: scale(1.1);
+}
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
 }
 </style>

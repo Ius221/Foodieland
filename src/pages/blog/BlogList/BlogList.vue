@@ -59,14 +59,10 @@ export default {
       left,
     };
   },
-  // methods: {
-  //   searchRecipe() {},
-  // },
   methods: {
     searchRecipes(data) {
       this.word = data.target.value;
     },
-    // console.log(this.searchRecipe);
   },
 };
 </script>
@@ -82,7 +78,6 @@ export default {
   border: none;
   height: 8rem;
   width: 70rem;
-  /* background-color: red; */
   margin: 0 auto;
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -153,7 +148,12 @@ button:hover {
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
   height: 6.4rem;
+  transition: all 0.3s;
   width: 6.4rem;
+}
+.pg-no:hover {
+  background-color: #e7f9fd;
+  border-color: #000;
 }
 .icon {
   border-radius: 16px;
