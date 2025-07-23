@@ -5,21 +5,23 @@
         <img class="notFoundImg" :src="notFound" alt="" />
         <div class="notFoundText">no blogs & article found</div>
       </div>
-      <div v-else class="lists" v-for="(blog, ind) in filterBlock" :key="ind">
-        <div class="img-container">
-          <img class="food-img" :src="blog.foodImage" alt="" />
-        </div>
-        <div class="blog-text">
-          <heading-tertiary>{{ blog.foodName }}</heading-tertiary>
-          <the-para class="para">
-            {{ blog.desc }}
-          </the-para>
-          <div class="person-details">
-            <img :src="blog.humanFace" alt="" class="icon" />
-            <h4>{{ blog.name }}</h4>
-            <div class="date">{{ blog.date }}</div>
+      <div v-else v-for="(blog, ind) in filterBlock" :key="ind">
+        <router-link :to="`/blog/${blog.id}`" class="lists">
+          <div class="img-container">
+            <img class="food-img" :src="blog.foodImage" alt="" />
           </div>
-        </div>
+          <div class="blog-text">
+            <heading-tertiary>{{ blog.foodName }}</heading-tertiary>
+            <the-para class="para">
+              {{ blog.desc }}
+            </the-para>
+            <div class="person-details">
+              <img :src="blog.humanFace" alt="" class="icon" />
+              <h4>{{ blog.name }}</h4>
+              <div class="date">{{ blog.date }}</div>
+            </div>
+          </div>
+        </router-link>
       </div>
     </div>
   </the-container>
@@ -63,6 +65,7 @@ export default {
 .food-img {
   top: -5%;
   width: 100%;
+  transition: all 0.3s;
   position: absolute;
   z-index: -1;
 }
@@ -109,5 +112,15 @@ h4 {
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover .food-img,
+a:active .food-img {
+  transform: scale(1.1);
 }
 </style>
