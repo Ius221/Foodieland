@@ -8,7 +8,7 @@
             <div
               class="like-conainter"
               :class="{ liked: foodList[ind].liked }"
-              @click="toggleLike(ind)"
+              @click.prevent="toggleLike(ind)"
             >
               &#10084;
             </div>
@@ -66,6 +66,7 @@ h3 {
 }
 .grid {
   display: grid;
+  justify-self: center;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 4rem;
 }

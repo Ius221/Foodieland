@@ -6,7 +6,7 @@
 
 <style>
 .container {
-  max-width: 144rem;
+  max-width: 128rem;
   margin: 0 auto;
 }
 </style>
