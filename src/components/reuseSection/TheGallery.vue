@@ -4,29 +4,30 @@
       <h3>Check out the delicious recipe</h3>
       <div class="grid">
         <div class="col" v-for="(food, ind) in foodList.slice(0, 4)" :key="ind">
-          <div
-            class="like-conainter"
-            :class="{ liked: foodList[ind].liked }"
-            @click="toggleLike(ind)"
-          >
-            &#10084;
-          </div>
-          <div class="img-container">
-            <img class="image" :src="food.imgpath" alt="food simage" />
-          </div>
-          <p class="recipe-name">{{ food.title }}</p>
-          <div class="time-type">
-            <div class="time">
-              <img class="svg-icon" :src="clock" alt="clock" />
-              <p>{{ food.time }}</p>
+          <router-link :to="`/recipe/${food.id}`">
+            <div
+              class="like-conainter"
+              :class="{ liked: foodList[ind].liked }"
+              @click="toggleLike(ind)"
+            >
+              &#10084;
             </div>
-            <div class="time">
-              <img class="svg-icon" :src="knife" alt="clock" />
-              <p>{{ food.type }}</p>
+            <div class="img-container">
+              <img class="image" :src="food.imgpath" alt="food simage" />
             </div>
-          </div>
+            <p class="recipe-name">{{ food.title }}</p>
+            <div class="time-type">
+              <div class="time">
+                <img class="svg-icon" :src="clock" alt="clock" />
+                <p>{{ food.time }}</p>
+              </div>
+              <div class="time">
+                <img class="svg-icon" :src="knife" alt="clock" />
+                <p>{{ food.type }}</p>
+              </div>
+            </div>
+          </router-link>
         </div>
-        <!--  -->
       </div>
     </div>
   </the-container>
@@ -133,5 +134,11 @@ h3 {
 
 .liked {
   color: #f00;
+}
+
+a:link,
+a:visited {
+  color: initial;
+  text-decoration: inherit;
 }
 </style>
