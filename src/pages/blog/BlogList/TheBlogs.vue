@@ -8,10 +8,14 @@
       <div v-else v-for="(blog, ind) in filterBlock" :key="ind">
         <router-link :to="`/blog/${blog.id}`" class="lists">
           <div class="img-container">
-            <img class="food-img" :src="blog.foodImage" alt="" />
+            <img class="food-img" :src="blog.blogImage" alt="" />
           </div>
           <div class="blog-text">
-            <heading-tertiary>{{ blog.foodName }}</heading-tertiary>
+            <heading-tertiary
+              >{{
+                blog.blogTitle.split(" ").slice(0, -3).join(" ")
+              }}...</heading-tertiary
+            >
             <the-para class="para">
               {{ blog.desc }}
             </the-para>
@@ -41,7 +45,7 @@ export default {
     filterBlock() {
       if (!this.word) return this.blogs.slice(0, 6);
       return this.blogs.filter((blog) =>
-        blog.foodName.toLowerCase().includes(this.word.toLowerCase())
+        blog.blogTitle.toLowerCase().includes(this.word.toLowerCase())
       );
     },
   },
@@ -123,5 +127,8 @@ a:visited {
 a:hover .food-img,
 a:active .food-img {
   transform: scale(1.1);
+}
+.blog-text {
+  max-width: 51rem;
 }
 </style>

@@ -7,8 +7,7 @@ import BlogPost from "./pages/blog/BlogPost/BlogPost.vue";
 // HOME, RECIPE-DETAILS,  BLOG-LIST, BLOG-POST,  CONTACT-US
 
 const routes = [
-    { path: '/', redirect: '/home' },
-    { path: '/home', component: null },
+    { path: '/', component: null },
     { path: '/recipe/:recipeId', component: RecipeIndex },
     { path: '/blog', component: BlogList },
     { path: '/blog/:blogId', component: BlogPost },

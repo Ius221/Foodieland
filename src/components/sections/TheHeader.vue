@@ -3,16 +3,45 @@
     <div class="name">Foodieland<span>.</span></div>
     <div class="navigation">
       <ul>
-        <li><router-link class="nav-link" to="/">Home</router-link></li>
         <li>
-          <router-link class="nav-link" to="/recipes">Recipes</router-link>
+          <router-link
+            class="nav-link"
+            to="/"
+            :class="{ active: route.path === '/' }"
+            >Home</router-link
+          >
         </li>
-        <li><router-link class="nav-link" to="/blog">Blog</router-link></li>
         <li>
-          <router-link class="nav-link" to="/contact">Contact</router-link>
+          <router-link
+            class="nav-link"
+            to="/recipes"
+            :class="{ active: isActive('/recipes') }"
+            >Recipes</router-link
+          >
         </li>
         <li>
-          <router-link class="nav-link" to="/about">About us</router-link>
+          <router-link
+            class="nav-link"
+            to="/blog"
+            :class="{ active: isActive('/blog') }"
+            >Blog</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            class="nav-link"
+            to="/contact"
+            :class="{ active: isActive('/contact') }"
+            >Contact</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            class="nav-link"
+            to="/about"
+            :class="{ active: isActive('/about') }"
+            >About us</router-link
+          >
         </li>
       </ul>
     </div>
@@ -33,8 +62,11 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import { useRoute } from "vue-router";
+const route = useRoute();
+const isActive = (base) =>
+  route.path === base || route.path.startsWith(base + "/");
 </script>
 
 <style scoped>
@@ -75,11 +107,6 @@ li {
   transition: all 0.3s;
 }
 
-.nav-link:hover,
-.nav-link:active {
-  transform: translateY(-3px);
-}
-
 /* LAST LINKS */
 .icon-link {
   font-size: 2.2rem;
@@ -89,5 +116,12 @@ li {
 .logos {
   display: flex;
   gap: 4rem;
+}
+
+.active:link,
+.active:visited {
+  padding-bottom: 2px;
+  text-decoration: underline;
+  font-weight: 700;
 }
 </style>

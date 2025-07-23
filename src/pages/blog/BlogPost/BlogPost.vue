@@ -1,7 +1,7 @@
 <template>
   <the-container>
     <div class="text-container">
-      <heading-primary>{{ currBlog.foodName }}</heading-primary>
+      <heading-primary>{{ currBlog.blogTitle }}</heading-primary>
       <div class="person-detail">
         <img class="face-img" :src="currBlog.humanFace" alt="" />
         <div class="name">{{ currBlog.name }}</div>
@@ -12,27 +12,21 @@
       </the-para>
     </div>
     <div class="img-container">
-      <img class="food-img" :src="currBlog.foodImage" alt="" />
+      <img class="food-img" :src="currBlog.blogImage" alt="" />
     </div>
     <div class="blog">
       <div class="qa">
-        <div class="innerQA" v-for="n in 5" :key="n">
-          <heading-tertiary class="question"
-            >How did you start out in the food industry?</heading-tertiary
-          >
-          <div class="img-box" v-if="n === 3">
-            <img class="img-inside" :src="currBlog.foodImage" alt="" />
+        <div class="innerQA" v-for="(qas, ind) in qa" :key="ind">
+          <heading-tertiary class="question">{{
+            qas.question
+          }}</heading-tertiary>
+          <div class="img-box" v-if="ind === 2">
+            <img class="img-inside" :src="currBlog.blogImage" alt="" />
           </div>
           <the-para class="ans">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim autem
-            porro commodi necessitatibus. Hic dolor aut quos illum quidem
-            laborum fuga. Eum delectus non nesciunt culpa sunt esse tenetur
-            optio.
+            {{ qas.answer }}
           </the-para>
-          <div class="thought" v-if="n === 4">
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi"
-            non.
-          </div>
+          <div class="thought" v-if="ind === 3">"{{ currBlog.quote }}"</div>
         </div>
       </div>
       <div class="links">
@@ -64,12 +58,14 @@ export default {
   data() {
     return {
       currBlog: null,
+      qa: null,
     };
   },
   created() {
     const id = this.$route.params.blogId;
     const allBlog = this.$store.state.blog.blogs;
     this.currBlog = allBlog.find((abc) => abc.id == id);
+    this.qa = this.currBlog.questionAnswer;
     console.log(id, this.currBlog);
   },
 };

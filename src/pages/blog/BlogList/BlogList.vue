@@ -20,20 +20,9 @@
       <the-blogs class="blogs" :word="word" />
       <right-recipe class="right-recipe" />
       <div class="pagination">
-        <router-link to="#"
-          ><div class="pg-no"><img class="icon" :src="left" alt="" /></div
-        ></router-link>
         <router-link to="#"><div class="pg-no active">1</div></router-link>
         <router-link to="#"><div class="pg-no">2</div></router-link>
         <router-link to="#"><div class="pg-no">3</div></router-link>
-        <router-link to="#"><div class="pg-no">4</div></router-link>
-        <router-link to="#"><div class="pg-no">5</div></router-link>
-        <router-link to="#"
-          ><div class="pg-no">
-            <div class="pg-no">
-              <img class="icon" :src="right" alt="" />
-            </div></div
-        ></router-link>
       </div>
     </div>
   </the-container>

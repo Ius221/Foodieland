@@ -1,8 +1,5 @@
 <template>
-  <h1>
-    Hii there <br />
-    this is recipe page
-  </h1>
+  <the-container></the-container>
 </template>
 
 <script>
