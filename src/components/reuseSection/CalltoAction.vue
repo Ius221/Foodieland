@@ -1,5 +1,5 @@
 <template>
-  <the-container>
+  <the-container class="cta-box">
     <div class="cta">
       <div class="cta-text">
         <h2>Deliciousness to your inbox</h2>
@@ -42,6 +42,9 @@ export default {
 </script>
 
 <style scoped>
+.cta-box {
+  margin: 16rem auto;
+}
 .cta {
   background-color: #e7f9fd;
   border-radius: 6rem;

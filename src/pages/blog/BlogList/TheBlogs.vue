@@ -1,7 +1,11 @@
 <template>
   <the-container class="gap">
     <div class="flex-gap">
-      <div class="lists" v-for="(blog, ind) in blogs" :key="ind">
+      <div class="notFound" v-if="filterBlock.length === 0">
+        <img class="notFoundImg" :src="notFound" alt="" />
+        <div class="notFoundText">no blogs & article found</div>
+      </div>
+      <div v-else class="lists" v-for="(blog, ind) in filterBlock" :key="ind">
         <div class="img-container">
           <img class="food-img" :src="blog.foodImage" alt="" />
         </div>
@@ -22,11 +26,22 @@
 </template>
 
 <script>
+import notFound from "@/assets/svg/notFound.png";
 export default {
+  props: ["word"],
   data() {
     return {
+      notFound,
       blogs: this.$store.state.blog.blogs,
     };
+  },
+  computed: {
+    filterBlock() {
+      if (!this.word) return this.blogs.slice(0, 6);
+      return this.blogs.filter((blog) =>
+        blog.foodName.toLowerCase().includes(this.word.toLowerCase())
+      );
+    },
   },
 };
 </script>
@@ -66,7 +81,7 @@ export default {
 h4 {
   padding: 0 2.4rem 0 1.6rem;
   font-size: 1.6rem;
-  border-right: 1px solid rgba(0, 0, 0, 1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 .date {
   margin-left: 2.4rem;
@@ -77,5 +92,22 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+}
+.notFoundImg {
+  height: 5rem;
+  width: 5rem;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(95%) saturate(5000%);
+}
+
+.notFoundText {
+  font-size: 2.4rem;
+  color: #f00;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.notFound {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 </style>
