@@ -1,29 +1,50 @@
 <template>
   <div class="right-recipe">
     <h2>Tasty Recipes</h2>
-    <div v-for="(recipe, ind) in recipes.slice(0, 3)" :key="ind">
-      <router-link class="recipe-list" :to="`/recipe/${recipe.id}`">
-        <div class="img-container">
-          <img :src="recipe.imgpath" alt="" />
-        </div>
-        <div class="recipe-text">
-          <h4 class="recipe-name">
-            {{ recipe.title.split(" ").slice(1, 3).join(" ") }}
-          </h4>
-          <the-para>By Ayush Gupta</the-para>
-        </div>
-      </router-link>
-    </div>
+    <router-link to="#">
+      <div v-for="(recipe, ind) in recipes.slice(0, 3)" :key="ind">
+        <router-link class="recipe-list" :to="`/recipe/${recipe.id}`">
+          <div class="img-container">
+            <img :src="recipe.imgpath" alt="" />
+          </div>
+          <div class="recipe-text">
+            <h4 class="recipe-name">
+              {{ recipe.title.split(" ").slice(1, 3).join(" ") }}
+            </h4>
+            <the-para>By {{ recipe.name }}</the-para>
+          </div>
+        </router-link>
+      </div>
+    </router-link>
+
     <ads-card />
   </div>
 </template>
 
 <script>
 export default {
+  props: ["incomData"],
   data() {
     return {
-      recipes: this.$store.state.recipe.recipes,
+      recipes: null,
     };
+  },
+  methods: {
+    watchRoute(data) {
+      if (data == null) this.recipes = this.$store.state.recipe.recipes;
+      else
+        this.recipes = this.$store.state.recipe.recipes.filter(
+          (abc) => abc.id != data
+        );
+    },
+  },
+  created() {
+    this.watchRoute(this.incomData);
+  },
+  watch: {
+    incomData(newData) {
+      this.watchRoute(newData);
+    },
   },
 };
 </script>

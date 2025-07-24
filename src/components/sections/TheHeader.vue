@@ -14,9 +14,9 @@
         <li>
           <router-link
             class="nav-link"
-            to="/recipes"
-            :class="{ active: isActive('/recipes') }"
-            >Recipes</router-link
+            to="/recipe"
+            :class="{ active: isActive('/recipe') }"
+            >Recipe</router-link
           >
         </li>
         <li>

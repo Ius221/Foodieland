@@ -79,18 +79,28 @@
       <the-para class="long-desc">
         {{ currRecipe.desc }}
       </the-para>
+      <ingredient-recipe
+        class="ingr"
+        :mIng="mainIng"
+        :sIng="sideIng"
+        :direction="direction"
+      />
+      <right-recipe :incomData="currRecipe.id" />
     </div>
+    <callto-action />
+    <the-gallery class="mar-bott" />
   </the-container>
 </template>
 
 <script>
 import print from "@/assets/svg/print.png";
 import share from "@/assets/svg/share.png";
-import HeadingPrimary from "../../ui/HeadingPrimary.vue";
 import clock from "@/assets/svg/clock.png";
 import fork from "@/assets/svg/forkKnife.png";
+import IngredientRecipe from "./IngredientRecipe.vue";
+import RightRecipe from "../blog/BlogList/RightRecipe.vue";
 export default {
-  components: { HeadingPrimary },
+  components: { IngredientRecipe, RightRecipe },
   data() {
     return {
       clock,
@@ -98,15 +108,29 @@ export default {
       share,
       fork,
       currRecipe: null,
+      mainIng: null,
+      sideIng: null,
+      direction: null,
       // nutrition: null,
     };
   },
+  methods: {
+    createRoute(route) {
+      const id = route.params.recipeId;
+      const allRecipe = this.$store.state.recipe.recipes;
+      this.currRecipe = allRecipe.find((abc) => abc.id == id);
+      this.mainIng = this.currRecipe.mainIngredient;
+      this.sideIng = this.currRecipe.sideIngredients;
+      this.direction = this.currRecipe.directions;
+    },
+  },
   created() {
-    const id = this.$route.params.recipeId;
-    const allRecipe = this.$store.state.recipe.recipes;
-    this.currRecipe = allRecipe.find((abc) => abc.id == id);
-    console.log(id, this.currRecipe);
-    // this.nutrition = this.currRecipe.nutrition;
+    this.createRoute(this.$route);
+  },
+  watch: {
+    $route(newRoute) {
+      this.createRoute(newRoute);
+    },
   },
 };
 </script>
@@ -255,7 +279,14 @@ h3 {
 }
 .long-desc {
   grid-column: 1/-1;
-  margin-top: 4rem;
-  margin-bottom: 8rem;
+  margin: 4rem 0;
+}
+
+/* Ingredient list */
+.ingr {
+  grid-column: 1/3;
+}
+.mar-bott {
+  margin-bottom: 16rem;
 }
 </style>

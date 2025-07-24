@@ -3,7 +3,11 @@
     <div class="gallery">
       <h3>Check out the delicious recipe</h3>
       <div class="grid">
-        <div class="col" v-for="(food, ind) in foodList.slice(0, 4)" :key="ind">
+        <div
+          class="col"
+          v-for="(food, ind) in foodList.slice(10, 14)"
+          :key="ind"
+        >
           <router-link :to="`/recipe/${food.id}`">
             <div
               class="like-conainter"

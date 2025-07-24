@@ -29,6 +29,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: -2;
   justify-content: space-between;
   width: 40rem;
   background-image: linear-gradient(to top, #1d483b, #357355);
@@ -36,6 +37,7 @@ export default {
 }
 .star {
   position: absolute;
+  z-index: -1;
   top: -30%;
 }
 .plate {
