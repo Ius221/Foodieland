@@ -2,36 +2,32 @@
   <the-container>
     <div class="outer-all">
       <div class="top-heading">
-        <heading-primary class="head">
-          {{
-            currRecipe.title.split(" ").slice(0, 3).join(" ")
-          }}</heading-primary
-        >
+        <heading-primary class="head"> {{ currRecipe.title }}</heading-primary>
         <div class="person-details">
           <div class="rec-box">
-            <img class="face-icon" :src="currRecipe.imgpath" alt="" />
+            <img class="face-icon" :src="currRecipe.humanFace" alt="" />
             <div class="person">
-              <div class="name">Lorem, ipsum</div>
-              <div class="date">15 march 2020</div>
+              <div class="name">{{ currRecipe.name }}</div>
+              <div class="date">{{ currRecipe.date }}</div>
             </div>
           </div>
           <div class="rec-box">
             <img class="small-icon" :src="clock" alt="" />
             <div class="person">
               <div class="time">prep time</div>
-              <div class="date">10 minutes</div>
+              <div class="date">{{ currRecipe.prepTime }}</div>
             </div>
           </div>
           <div class="rec-box">
             <img class="small-icon" :src="clock" alt="" />
             <div class="person">
               <div class="time">cook time</div>
-              <div class="date">10 minutes</div>
+              <div class="date">{{ currRecipe.cookTime }}</div>
             </div>
           </div>
           <div class="rec-box">
             <img class="small-icon" :src="fork" alt="" />
-            <div class="date">chicken</div>
+            <div class="date">{{ currRecipe.type }}</div>
           </div>
         </div>
       </div>
@@ -52,6 +48,37 @@
       <div class="recipe-img--container">
         <img class="recipe-img" :src="currRecipe.imgpath" alt="" />
       </div>
+      <div class="nutrition-info">
+        <h3>Nutrition Informaion</h3>
+        <div class="info-list">
+          <div class="info">
+            <p>Calories</p>
+            <num>{{ currRecipe.nutrition.calories }} kcal</num>
+          </div>
+          <div class="info">
+            <p>Total Fat</p>
+            <num>{{ currRecipe.nutrition.fat.slice(0, -1) }} g</num>
+          </div>
+          <div class="info">
+            <p>Protein</p>
+            <num>{{ currRecipe.nutrition.protein.slice(0, -1) }} g</num>
+          </div>
+          <div class="info">
+            <p>Carbohydrate</p>
+            <num>{{ currRecipe.nutrition.carbohydrate.slice(0, -1) }} g</num>
+          </div>
+          <div class="info">
+            <p>Cholesterol</p>
+            <num>{{ currRecipe.nutrition.cholesterol.slice(0, -2) }} mg</num>
+          </div>
+        </div>
+        <p class="though">
+          {{ currRecipe.nutrition.quote }}
+        </p>
+      </div>
+      <the-para class="long-desc">
+        {{ currRecipe.desc }}
+      </the-para>
     </div>
   </the-container>
 </template>
@@ -71,6 +98,7 @@ export default {
       share,
       fork,
       currRecipe: null,
+      // nutrition: null,
     };
   },
   created() {
@@ -78,6 +106,7 @@ export default {
     const allRecipe = this.$store.state.recipe.recipes;
     this.currRecipe = allRecipe.find((abc) => abc.id == id);
     console.log(id, this.currRecipe);
+    // this.nutrition = this.currRecipe.nutrition;
   },
 };
 </script>
@@ -85,6 +114,7 @@ export default {
 <style scoped>
 .outer-all {
   padding-top: 8rem;
+  gap: 4rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -183,7 +213,49 @@ export default {
 }
 .recipe-img {
   position: absolute;
-  top: -15%;
-  width: 100%;
+  top: -5%;
+  left: -5%;
+  width: 120%;
+}
+
+/*Nutrition info box */
+.nutrition-info {
+  background-color: #e7fafe;
+  padding: 3.2rem;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 2.4rem;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nutrition-info p {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.info num {
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #000;
+}
+.though {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: auto;
+}
+.long-desc {
+  grid-column: 1/-1;
+  margin-top: 4rem;
+  margin-bottom: 8rem;
 }
 </style>

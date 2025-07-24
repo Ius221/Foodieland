@@ -60,8 +60,9 @@ h4 {
 img {
   transition: all 0.3s;
   position: absolute;
-  top: -15%;
-  width: 100%;
+  top: -10%;
+  right: -15%;
+  width: 120%;
   z-index: -1;
 }
 
