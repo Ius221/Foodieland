@@ -5,7 +5,9 @@
         <router-link class="title" to="/">Foodieland<span>.</span></router-link>
         <ul>
           <li>
-            <router-link class="nav-link" to="/recipes">Recipes</router-link>
+            <router-link class="nav-link" to="/recipe/page/1"
+              >Recipes</router-link
+            >
           </li>
           <li><router-link class="nav-link" to="/blog">Blog</router-link></li>
           <li>

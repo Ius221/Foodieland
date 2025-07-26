@@ -8,10 +8,9 @@
       >
       <div class="search-box">
         <input
-          type="email"
-          name="mail"
+          type="text"
           @input="searchRecipes"
-          placeholder="Search article, news or recipe..."
+          placeholder="Search Article, News or Blogs..."
         />
         <button type="submit" @click="searchRecipes">Search</button>
       </div>

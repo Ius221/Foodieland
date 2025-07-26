@@ -9,7 +9,7 @@ import AllRecipe from "./pages/recipe/allRecipe/AllRecipe.vue";
 
 const routes = [
     { path: '/', component: null },
-    { path: '/recipe/:recipeNum', component: AllRecipe },
+    { path: '/recipe/page/:recipeNum', component: AllRecipe },
     { path: '/recipe/:recipeId', component: RecipeIndex },
     { path: '/blog', component: BlogList },
     { path: '/blog/:blogId', component: BlogPost },
