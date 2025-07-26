@@ -34,6 +34,14 @@
       <div class="print-share">
         <div class="print-container">
           <div class="sm-cont">
+            <div class="heart-icon" :class="isLiked()" :src="print" alt="">
+              &#10084;
+            </div>
+          </div>
+          <p class="print-text">Like</p>
+        </div>
+        <div class="print-container">
+          <div class="sm-cont">
             <img class="small-icon" :src="print" alt="" />
           </div>
           <p class="print-text">Print</p>
@@ -98,7 +106,7 @@ import share from "@/assets/svg/share.png";
 import clock from "@/assets/svg/clock.png";
 import fork from "@/assets/svg/forkKnife.png";
 import IngredientRecipe from "./IngredientRecipe.vue";
-import RightRecipe from "../blog/BlogList/RightRecipe.vue";
+import RightRecipe from "../../blog/BlogList/RightRecipe.vue";
 export default {
   components: { IngredientRecipe, RightRecipe },
   data() {
@@ -123,9 +131,16 @@ export default {
       this.sideIng = this.currRecipe.sideIngredients;
       this.direction = this.currRecipe.directions;
     },
+    isLiked() {
+      return this.currRecipe.liked ? "red-heart" : "";
+    },
   },
+  // mounted: {
+
+  // },
   created() {
     this.createRoute(this.$route);
+    console.log(this.currRecipe);
   },
   watch: {
     $route(newRoute) {
@@ -288,5 +303,15 @@ h3 {
 }
 .mar-bott {
   margin-bottom: 16rem;
+}
+.heart-icon {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+.red-heart {
+  color: #f00;
 }
 </style>

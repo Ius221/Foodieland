@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ContactIndex from "./pages/contact/ContactIndex.vue";
-import RecipeIndex from "./pages/recipe/RecipeIndex.vue";
+import RecipeIndex from "./pages/recipe/recipeList/RecipeIndex.vue";
 import BlogList from "./pages/blog/BlogList/BlogList.vue";
 import BlogPost from "./pages/blog/BlogPost/BlogPost.vue";
+import AllRecipe from "./pages/recipe/allRecipe/AllRecipe.vue";
 
 // HOME, RECIPE-DETAILS,  BLOG-LIST, BLOG-POST,  CONTACT-US
 
 const routes = [
     { path: '/', component: null },
+    { path: '/recipe/:recipeNum', component: AllRecipe },
     { path: '/recipe/:recipeId', component: RecipeIndex },
     { path: '/blog', component: BlogList },
     { path: '/blog/:blogId', component: BlogPost },

@@ -14,7 +14,7 @@
         <li>
           <router-link
             class="nav-link"
-            to="/recipe"
+            to="/recipe/01"
             :class="{ active: isActive('/recipe') }"
             >Recipe</router-link
           >
